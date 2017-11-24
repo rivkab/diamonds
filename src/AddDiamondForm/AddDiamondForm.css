@@ -1,0 +1,22 @@
+
+.AddDiamondForm_container{
+    display: flex;
+    align-items: center;
+    padding-bottom: 2em; 
+}
+
+.AddDiamondForm_title{
+    flex: 1;
+    text-align: right;
+
+}
+
+.AddDiamondForm_form{
+    flex: 3;
+    
+
+}
+
+input[type="number"] {
+    width:50px;
+ }
