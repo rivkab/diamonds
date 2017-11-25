@@ -29,9 +29,8 @@ export default class AddDiamondForm extends Component {
     }
 
     handleSubmit(event) {
-        //TODO wipe form
-        alert("you picked:"+this.state.shape);
-        event.preventDefault();
+        //TODO note that currently it reloads the page
+        //send state to backend
     }
 
     getSelect(name, currValue, values) {
@@ -63,6 +62,7 @@ export default class AddDiamondForm extends Component {
                         <input
                             name="price"
                             type="number"
+                            step="0.01"
                             min="0"
                             value={this.state.price}
                             onChange={this.handleInputChange} />
