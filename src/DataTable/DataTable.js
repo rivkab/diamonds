@@ -7,6 +7,7 @@ export default function DataTable(props) {
     return (
         <div className="DataTable">
             <ReactTable
+                data={props.data}
                 columns={[
                     {
                         Header: "Shape",

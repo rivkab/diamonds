@@ -2,17 +2,3 @@
   flex:1;
 }
 
-.App-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-

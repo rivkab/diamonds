@@ -1,0 +1,15 @@
+
+
+.Header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
+  }
+  
+  .Header_title {
+    font-size: 1.5em;
+  }

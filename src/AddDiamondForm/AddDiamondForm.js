@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import "./AddDiamondForm.css"
 
 const shapes = ["Round", "Pear", "Emerald", "Princess", "Oval"];
-const colors = ["D","E", "F","G","H","I","J","K","L","M"];
-const clarities = ["FL", "IF", "VVS1", "VVS2", "VS1", "VS2", "Sl1","Sl2","I1", "I2", "I3"];
+const colors = ["D", "E", "F", "G", "H", "I", "J", "K", "L", "M"];
+const clarities = ["FL", "IF", "VVS1", "VVS2", "VS1", "VS2", "Sl1", "Sl2", "I1", "I2", "I3"];
 
 export default class AddDiamondForm extends Component {
 
@@ -29,14 +29,25 @@ export default class AddDiamondForm extends Component {
     }
 
     handleSubmit(event) {
-        //TODO note that currently it reloads the page
+        event.preventDefault();
         //send state to backend
+        console.log("ADDING:"+JSON.stringify(this.state));
+        fetch('http://localhost:5000/api/diamond', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        }).then(response => {this.props.refresh();})
+        .catch(e => console.log(e));
+        
+        
     }
 
     getSelect(name, currValue, values) {
         return (
             <select name={name} value={currValue} onChange={this.handleInputChange}>
-                {values.map(x => <option value={x}>{x}</option>)}
+                {values.map((x, i) => <option key={i} value={x}>{x}</option>)}
             </select>
         )
     }
@@ -57,7 +68,7 @@ export default class AddDiamondForm extends Component {
                             onChange={this.handleInputChange} />
                     </label>
                     <label> Color: {this.getSelect("color", this.state.color, colors)}</label>
-                    <label> Clarity: {this.getSelect("clarity",this.state.clarity, clarities)}</label>
+                    <label> Clarity: {this.getSelect("clarity", this.state.clarity, clarities)}</label>
                     <label> Price: $
                         <input
                             name="price"
