@@ -10,19 +10,20 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      diamondsData: []
+      diamondsData: [],
+      error: ''
     };
   }
 
   fetchData(){
-    console.log("fetching data")
     fetch("http://localhost:5000/api/diamond")
       .then(response => {
         return response.json();}
       ).then(json => {
         this.setState({diamondsData: json});
       }).catch(ex => {
-        console.log('parsing failed', ex)
+        console.error('parsing failed', ex)
+        this.setState({error: "Error fetching data"})
       });
   }
 
@@ -54,6 +55,7 @@ class App extends Component {
           count={this.state.diamondsData.length} 
           avgDiscount={this.getAverageDiscount(avgPrice)}/>
         <DataTable data={this.state.diamondsData}/>
+        <p className='App_error'>{this.state.error}</p>
         <AddDiamondForm  refresh={this.fetchData.bind(this)}/>
       </div>
     );

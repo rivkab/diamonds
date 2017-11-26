@@ -39,9 +39,7 @@ export default class AddDiamondForm extends Component {
             },
             body: JSON.stringify(this.state)
         }).then(response => {this.props.refresh();})
-        .catch(e => console.log(e));
-        
-        
+        .catch(e => alert("Error adding diamond. Please try again")); 
     }
 
     getSelect(name, currValue, values) {

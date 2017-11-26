@@ -2,3 +2,8 @@
   flex:1;
 }
 
+.App_error{
+  text-align: center;
+  color: red;
+}
+
